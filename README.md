@@ -6,20 +6,20 @@ Installation:
 * Use engine-config to create a custom property:
 
 ```bash
-  sudo engine-config -s "UserDefinedVMProperties=gpupassthrough=^(true|false)$"
+sudo engine-config -s "UserDefinedVMProperties=gpupassthrough=^(true|false)$"
 ```
 
 * To confirm that the property was added:
 
 ```bash
-  sudo engine-config -g UserDefinedVMProperties
+sudo engine-config -g UserDefinedVMProperties
 ```
 
 * Place 99_gpu_passthrough in /usr/libexec/vdsm/hooks/before_vm_start
 
 ```bash
-  sudo cp 99_gpu_passthrough /usr/libexec/vdsm/hooks/before_vm_start
-  sudo chmod +x /usr/libexec/vdsm/hooks/before_vm_start/99_gpu_passthrough
+sudo cp 99_gpu_passthrough /usr/libexec/vdsm/hooks/before_vm_start
+sudo chmod +x /usr/libexec/vdsm/hooks/before_vm_start/99_gpu_passthrough
 ```
 
 Usage:
