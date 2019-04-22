@@ -1,0 +1,23 @@
+#!/usr/bin/python2
+
+import hooking
+import os
+
+domxml = hooking.read_domxml()
+
+if hooking.tobool(os.environ.get('gpupassthrough')):
+
+  hyperv = domxml.getElementsByTagName('hyperv')[0]
+  smm = domxml.createElement('vendor_id')
+  smm.setAttribute('state', 'on')
+  smm.setAttribute('value', 'whatever')
+  hyperv.appendChild(smm)
+
+  features = domxml.getElementsByTagName('features')[0]
+  kvm = domxml.createElement('kvm')
+  hidden = domxml.createElement('hidden')
+  hidden.setAttribute('state', 'on')
+  kvm.appendChild(hidden)
+  features.appendChild(kvm)
+
+  hooking.write_domxml(domxml)
