@@ -15,13 +15,13 @@ sudo engine-config -s "UserDefinedVMProperties=gpupassthrough=^(true|false)$"
 sudo engine-config -g UserDefinedVMProperties
 ```
 
-* Restart the engine
+* Restart the engine:
 
 ```bash
 sudo systemctl restart ovirt-engine
 ```
 
-* Place 99_gpu_passthrough in /usr/libexec/vdsm/hooks/before_vm_start
+* Place 99_gpu_passthrough in /usr/libexec/vdsm/hooks/before_vm_start:
 
 ```bash
 sudo cp 99_gpu_passthrough /usr/libexec/vdsm/hooks/before_vm_start
