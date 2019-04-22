@@ -5,16 +5,22 @@ oVirt VDSM Hook for passing through GPU
 Installation:
 * Use engine-config to create a custom property:
 
-    sudo engine-config -s "UserDefinedVMProperties=gpupassthrough=^(true|false)$"
+```bash
+  sudo engine-config -s "UserDefinedVMProperties=gpupassthrough=^(true|false)$"
+```
 
 * To confirm that the property was added:
 
-    sudo engine-config -g UserDefinedVMProperties
+```bash
+  sudo engine-config -g UserDefinedVMProperties
+```
 
 * Place 99_gpu_passthrough in /usr/libexec/vdsm/hooks/before_vm_start
 
-    sudo cp 99_gpu_passthrough /usr/libexec/vdsm/hooks/before_vm_start
-    sudo chmod +x /usr/libexec/vdsm/hooks/before_vm_start/99_gpu_passthrough
+```bash
+  sudo cp 99_gpu_passthrough /usr/libexec/vdsm/hooks/before_vm_start
+  sudo chmod +x /usr/libexec/vdsm/hooks/before_vm_start/99_gpu_passthrough
+```
 
 Usage:
 Edit the VM, add the following custom property to hide kvm from the VM and add a vendor id:
@@ -39,4 +45,5 @@ This adds the following entries to the guest XML:
 
 Adapted from this thread:
 https://www.mail-archive.com/users@ovirt.org/msg40377.html
+
 Thanks, Martin!
