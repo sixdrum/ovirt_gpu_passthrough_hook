@@ -30,7 +30,8 @@ sudo chmod +x /usr/libexec/vdsm/hooks/before_vm_start/99_gpu_passthrough
 
 Usage:
 Edit the VM, add the following custom property to hide kvm from the VM and add a vendor id:
-gpupassthrough=true 
+
+**gpupassthrough=true**
 
 Details:
 This adds the following entries to the guest XML:
