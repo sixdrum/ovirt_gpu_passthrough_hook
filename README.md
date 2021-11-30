@@ -50,6 +50,27 @@ This adds the following entries to the guest XML:
   </features>
 ```
 
+**Troubleshooting**
+
+* failed to execute
+
+If you see the following error in your event log:  
+```
+VM xxx is down with error. Exit message: Hook Error: (b'taskset: failed to execute /usr/libexec/vdsm/hooks/before_vm_start/99_gpu_passthrough: No such file or directory\n',).
+```
+
+Although it's not clear from the message, it's most likely the python interpreter that's not been found, not the 99_gpu_passthrough script.  
+
+To fix the problem, replace the shebang line in `99_gpu_passthrough`
+
+`#!/usr/bin/python2`
+
+with the equivalent from `50_hostedengine`, for example:
+
+`#!/usr/libexec/platform-python`
+  
+  
+  
 Adapted from this thread:
 https://www.mail-archive.com/users@ovirt.org/msg40377.html
 
